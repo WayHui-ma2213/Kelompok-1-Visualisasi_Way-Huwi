@@ -1,11 +1,11 @@
 let urlAPI ="https://api.openweathermap.org/data/2.5/weather?q=WAY HUWI&appid=6690fa214e4146088bb8f1946c21cfad&units=metric";
-let urlUsia = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA-XDZ2nZIqnbImye-wYGEwanKR2nIp10rvu0-G0gi3gvR0sD2JrV_q1AJVFvA0m-toGS4j70ZFDph/pub?output=csv"
+let urlUmur = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA-XDZ2nZIqnbImye-wYGEwanKR2nIp10rvu0-G0gi3gvR0sD2JrV_q1AJVFvA0m-toGS4j70ZFDph/pub?output=csv"
 let urlPekerjaan = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe3saRSYjV7C_G2UTaZgsI2_JPKDZkEoVyyobcU51nyyFPiXVdHKRy3Pdd7VNQ4IjrkV_XkWez0--U/pub?output=csv"
 let urlPendidikan = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlfVsEcUt6HuA-fUqeOoLZg2sSB3Uu6c1urFI_K0IItbPKNEhTzVkS5qex8QCWk0zvZoZBFPGLRDWS/pub?output=csv"
 let urlJeniskelamin= "https://docs.google.com/spreadsheets/d/e/2PACX-1vSutdAXlW-TaZFhh3bpkgtMbuUBSK7Dq7j6Ms_YeRmArKOiMTfP3i_gJpIR4jPJ0-RjUoOuMqKyTwMN/pub?output=csv"
 let urlAgama = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4oFsx9m9KadAlEHZaKyzT8vMIE10sz4Vz_If-Qv2gtNSZP0TQRYRxr0_JxEL08Gpa4T-F_7UcNIxN/pub?output=csv"
 let dataAPI;
-let dataUsia;
+let dataUmur;
 let dataPekerjaan;
 let dataPendidikan;
 let dataJeniskelamin;
@@ -38,7 +38,7 @@ function API(a, b, data, fontSize){
 
 function preload(){
   dataAPI = loadJSON(urlAPI);
-  dataUsia = loadTable(urlUsia, 'csv', 'header');
+  dataUmur = loadTable(urlUmur, 'csv', 'header');
   dataPekerjaan = loadTable(urlPekerjaan, 'csv', 'header');
   dataPendidikan = loadTable(urlPendidikan, 'csv', 'header');
   dataJeniskelamin = loadTable(urlJeniskelamin, 'csv', 'header');
@@ -74,8 +74,8 @@ function draw() {
   image(itera,20,25,50,50);
   image(mtk,330,25,50,50);
   
-  anglesusia = dataUsia.getColumn('x')
-  pieChartusia(200, anglesusia);
+  anglesumur = dataUmur.getColumn('x')
+  pieChartumur(200, anglesumur);
   anglespek = dataPekerjaan.getColumn('x')
   pieChartpekerjaan(200, anglespek);
   anglespen = dataPendidikan.getColumn('x')
@@ -149,20 +149,20 @@ function draw() {
   text ("D. Peta Desa WAY HUWI",110,3050)
 }
 
-function pieChartusia(diameter, dataUsia) {
+function pieChartumur(diameter, dataUmur) {
   var color = ['#8B008B','#9400D3','#9932CC ','	#BA55D3','	#800080 ', '#D8BFD8','	#EE82EE','#FF00FF']
   let lastAngle = 0; 
-  for (var i = 0; i < dataUsia.length; i++) {
+  for (var i = 0; i < dataUmur.length; i++) {
     fill(color[i])
-    arc( 275,2175,diameter,diameter,lastAngle,lastAngle + radians(anglesusia[i]));
-    lastAngle += radians(anglesusia[i]);
+    arc( 275,2175,diameter,diameter,lastAngle,lastAngle + radians(anglesumur[i]));
+    lastAngle += radians(anglesumur[i]);
   }
   fill(192,192,192,100)
   rect(100,2025,370,470)
   textSize(18)
   textFont(f1)
   fill('black')
-  text("Data Grafik Umur",200,2050)
+  text("Data Umur",200,2050)
   textSize(20)
   textFont(f1)
   text("0-5 thn                                           = 408",110,2300)
@@ -270,7 +270,7 @@ function pieChartpendidikan(diameter, dataPendidikan) {
   fill(color[5]) ;
   rect(1200,2420,20,10);
   fill(color[6]) ;
-  rect(1200,2445,20),10;
+  rect(1200,2445,20,10);
   fill(color[7]) ;
   rect(1200,2470,20,10);
 }
