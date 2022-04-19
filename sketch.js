@@ -75,15 +75,15 @@ function draw() {
   image(mtk,330,25,50,50);
   
   anglesusia = dataUsia.getColumn('x')
-  pieChart(200, anglesusia);
+  pieChartusia(200, anglesusia);
   anglespek = dataPekerjaan.getColumn('x')
-  pieChart(200, anglespek);
+  pieChartpekerjaan(200, anglespek);
   anglespen = dataPendidikan.getColumn('x')
-  pieChart(200, anglespen);
+  pieChartpendidikan(200, anglespen);
   anglesjen = dataJeniskelamin.getColumn('x')
-  pieChart(200, anglesjen);
+  pieChartjeniskelamin(200, anglesjen);
   anglesagama = dataAgama.getColumn('x')
-  pieChart(200, anglesagama);
+  pieChartagama(200, anglesagama);
 
   fill('black');
   textFont(f1);
@@ -149,7 +149,7 @@ function draw() {
   text ("D. Peta Desa WAY HUWI",110,3050)
 }
 
-function pieChart(diameter, dataUsia) {
+function pieChartusia(diameter, dataUsia) {
   var color = ['#8B008B','#9400D3','#9932CC ','	#BA55D3','	#800080 ', '#D8BFD8','	#EE82EE','#FF00FF']
   let lastAngle = 0; 
   for (var i = 0; i < dataUsia.length; i++) {
@@ -191,7 +191,7 @@ function pieChart(diameter, dataUsia) {
   rect(320,2470,20,10);  
 }
 
-function pieChart(diameter, dataPekerjaan) {
+function pieChartpekerjaan(diameter, dataPekerjaan) {
   var color = ['#228B22','#00FF00','	#32CD32 ','	#90EE90','#98FB98 ', '#8FBC8F','#00FA9A','	#00FF7F']
   let lastAngle = 0; 
   for (var i = 0; i < dataPekerjaan.length; i++) {
@@ -233,7 +233,7 @@ function pieChart(diameter, dataPekerjaan) {
   rect(830,2470,20,10);
 }
 
-function pieChart(diameter, dataPendidikan) {
+function pieChartpendidikan(diameter, dataPendidikan) {
   var color = ['#C0C0C0','#808080','	#800000','	#808000','#008000 ', '	#800080','#008080','	#000080']
   let lastAngle = 0;
   for (var i = 0; i < dataPendidikan.length; i++) {
@@ -275,7 +275,7 @@ function pieChart(diameter, dataPendidikan) {
   rect(1200,2470,20,10);
 }
 
-function pieChart(diameter, dataJeniskelamin) {
+function pieChartjeniskelamin(diameter, dataJeniskelamin) {
   var color = ['#FF4500','#D2691E']
   let lastAngle = 0; 
   for (var i = 0; i < dataJeniskelamin.length; i++) {
@@ -298,7 +298,7 @@ function pieChart(diameter, dataJeniskelamin) {
   rect(300,2845,20,10);
 }
 
-function pieChart(diameter, dataAgama) {
+function pieChartagama(diameter, dataAgama) {
   var color = ['#8A2BE2 ','#483D8B','	#6A5ACD ','	#7B68EE ', '	#9370DB'];
   let lastAngle = 0;
   for (var i = 0; i < dataAgama.length; i++) {
