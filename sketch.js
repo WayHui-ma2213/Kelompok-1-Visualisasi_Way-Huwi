@@ -1,8 +1,8 @@
 let urlAPI ="https://api.openweathermap.org/data/2.5/weather?q=WAY HUWI&appid=6690fa214e4146088bb8f1946c21cfad&units=metric";
-let urlusia = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA-XDZ2nZIqnbImye-wYGEwanKR2nIp10rvu0-G0gi3gvR0sD2JrV_q1AJVFvA0m-toGS4j70ZFDph/pub?output=csv"
-let urlpek = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe3saRSYjV7C_G2UTaZgsI2_JPKDZkEoVyyobcU51nyyFPiXVdHKRy3Pdd7VNQ4IjrkV_XkWez0--U/pub?output=csv"
-let urlpen = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlfVsEcUt6HuA-fUqeOoLZg2sSB3Uu6c1urFI_K0IItbPKNEhTzVkS5qex8QCWk0zvZoZBFPGLRDWS/pub?output=csv"
-let urljen= "https://docs.google.com/spreadsheets/d/e/2PACX-1vSutdAXlW-TaZFhh3bpkgtMbuUBSK7Dq7j6Ms_YeRmArKOiMTfP3i_gJpIR4jPJ0-RjUoOuMqKyTwMN/pub?output=csv"
+let urlUsia = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA-XDZ2nZIqnbImye-wYGEwanKR2nIp10rvu0-G0gi3gvR0sD2JrV_q1AJVFvA0m-toGS4j70ZFDph/pub?output=csv"
+let urlPekerjaan = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRe3saRSYjV7C_G2UTaZgsI2_JPKDZkEoVyyobcU51nyyFPiXVdHKRy3Pdd7VNQ4IjrkV_XkWez0--U/pub?output=csv"
+let urlPendidikan = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlfVsEcUt6HuA-fUqeOoLZg2sSB3Uu6c1urFI_K0IItbPKNEhTzVkS5qex8QCWk0zvZoZBFPGLRDWS/pub?output=csv"
+let urlJeniskelamin= "https://docs.google.com/spreadsheets/d/e/2PACX-1vSutdAXlW-TaZFhh3bpkgtMbuUBSK7Dq7j6Ms_YeRmArKOiMTfP3i_gJpIR4jPJ0-RjUoOuMqKyTwMN/pub?output=csv"
 let urlAgama = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4oFsx9m9KadAlEHZaKyzT8vMIE10sz4Vz_If-Qv2gtNSZP0TQRYRxr0_JxEL08Gpa4T-F_7UcNIxN/pub?output=csv"
 let dataAPI;
 let dataUsia;
@@ -38,10 +38,10 @@ function API(a, b, data, fontSize){
 
 function preload(){
   dataAPI = loadJSON(urlAPI);
-  dataUsia = loadTable(urlusia, 'csv', 'header');
-  dataPekerjaan = loadTable(urlpek, 'csv', 'header');
-  dataPendidikan = loadTable(urlpen, 'csv', 'header');
-  dataJeniskelamin = loadTable(urljen, 'csv', 'header');
+  dataUsia = loadTable(urlUsia, 'csv', 'header');
+  dataPekerjaan = loadTable(urlPekerjaan, 'csv', 'header');
+  dataPendidikan = loadTable(urlPendidikan, 'csv', 'header');
+  dataJeniskelamin = loadTable(urlJeniskelamin, 'csv', 'header');
   dataAgama = loadTable(urlAgama, 'csv', 'header');
   f1 = loadFont('f1.otf');
   f2 = loadFont('f2.otf');
@@ -75,15 +75,15 @@ function draw() {
   image(mtk,330,25,50,50);
   
   anglesusia = dataUsia.getColumn('x')
-  pieChartusia(200, anglesusia);
+  pieChart(200, anglesusia);
   anglespek = dataPekerjaan.getColumn('x')
-  pieChartpek(200, anglespek);
+  pieChart(200, anglespek);
   anglespen = dataPendidikan.getColumn('x')
-  pieChartpen(200, anglespen);
+  pieChart(200, anglespen);
   anglesjen = dataJeniskelamin.getColumn('x')
-  pieChartjen(200, anglesjen);
+  pieChart(200, anglesjen);
   anglesagama = dataAgama.getColumn('x')
-  pieChartagama(200, anglesagama);
+  pieChart(200, anglesagama);
 
   fill('black');
   textFont(f1);
@@ -149,11 +149,11 @@ function draw() {
   text ("D. Peta Desa WAY HUWI",110,3050)
 }
 
-function pieChartusia(diameter, dataUsia) {
-  var colorusia = ['#8B008B','#9400D3','#9932CC ','	#BA55D3','	#800080 ', '#D8BFD8','	#EE82EE','#FF00FF']
+function pieChart(diameter, dataUsia) {
+  var color = ['#8B008B','#9400D3','#9932CC ','	#BA55D3','	#800080 ', '#D8BFD8','	#EE82EE','#FF00FF']
   let lastAngle = 0; 
   for (var i = 0; i < dataUsia.length; i++) {
-    fill(colorusia[i])
+    fill(color[i])
     arc( 275,2175,diameter,diameter,lastAngle,lastAngle + radians(anglesusia[i]));
     lastAngle += radians(anglesusia[i]);
   }
@@ -173,29 +173,29 @@ function pieChartusia(diameter, dataUsia) {
   text("25-45 thn                                       = 97",110,2425)
   text("46-60 thn                                      = 164",110,2450)
   text("60 thn ke atas                            = 817",110,2475)
-  fill(colorusia[0]) ;
+  fill(color[0]) ;
   rect(320,2295,20,10);
-  fill(colorusia[1]) ;
+  fill(color[1]) ;
   rect(320,2320,20,10);
-  fill(colorusia[2]) ;
+  fill(color[2]) ;
   rect(320,2345,20,10);
-  fill(colorusia[3]) ;
+  fill(color[3]) ;
   rect(320,2370,20,10);
-  fill(colorusia[4]) ;
+  fill(color[4]) ;
   rect(320,2395,20,10);
-  fill(colorusia[5]) ;
+  fill(color[5]) ;
   rect(320,2420,20,10);
-  fill(colorusia[6]) ;
+  fill(color[6]) ;
   rect(320,2445,20,10);
-  fill(colorusia[7]) ;
+  fill(color[7]) ;
   rect(320,2470,20,10);  
 }
 
-function pieChartpek(diameter, dataPekerjaan) {
-  var colorpek = ['#228B22','#00FF00','	#32CD32 ','	#90EE90','#98FB98 ', '#8FBC8F','#00FA9A','	#00FF7F']
+function pieChart(diameter, dataPekerjaan) {
+  var color = ['#228B22','#00FF00','	#32CD32 ','	#90EE90','#98FB98 ', '#8FBC8F','#00FA9A','	#00FF7F']
   let lastAngle = 0; 
   for (var i = 0; i < dataPekerjaan.length; i++) {
-    fill(colorpek[i])
+    fill(color[i])
     arc(720,2175,diameter,diameter,lastAngle,lastAngle + radians(anglespek[i]));
     lastAngle += radians(anglespek[i]);
   }
@@ -215,29 +215,29 @@ function pieChartpek(diameter, dataPekerjaan) {
   text("PENGUSAHA                          = 97",600,2425)
   text("PETANI                                    = 164",600,2450)
   text("PENGANGGURAN                 = 817",600,2475)
-  fill(colorpek[0]);
+  fill(color[0]);
   rect(830,2295,20,10);
-  fill(colorpek[1]);
+  fill(color[1]);
   rect(830,2320,20,10);
-  fill(colorpek[2]);
+  fill(color[2]);
   rect(830,2345,20,10);
-  fill(colorpek[3]);
+  fill(color[3]);
   rect(830,2370,20,10);
-  fill(colorpek[4]);
+  fill(color[4]);
   rect(830,2395,20,10);
-  fill(colorpek[5]);
+  fill(color[5]);
   rect(830,2420,20,10);
-  fill(colorpek[5]);
+  fill(color[5]);
   rect(830,2445,20,10);
-  fill(colorpek[6]);
+  fill(color[6]);
   rect(830,2470,20,10);
 }
 
-function pieChartpen(diameter, dataPendidikan) {
-  var colorpen = ['#C0C0C0','#808080','	#800000','	#808000','#008000 ', '	#800080','#008080','	#000080']
+function pieChart(diameter, dataPendidikan) {
+  var color = ['#C0C0C0','#808080','	#800000','	#808000','#008000 ', '	#800080','#008080','	#000080']
   let lastAngle = 0;
   for (var i = 0; i < dataPendidikan.length; i++) {
-    fill(colorpen[i])
+    fill(color[i])
     arc(1165,2175,diameter,diameter,lastAngle,lastAngle + radians(anglespen[i]));
     lastAngle += radians(anglespen[i]);
   }
@@ -257,29 +257,29 @@ function pieChartpen(diameter, dataPendidikan) {
   text("Tamat S1                              = 55",1000,2425)
   text("Tamat S2                             = 553",1000,2450)
   text("Tamat S3                             = 1",1000,2475)
-  fill(colorpen[0]) ;
+  fill(color[0]) ;
   rect(1200,2295,20,10);
-  fill(colorpen[1]) ;
+  fill(color[1]) ;
   rect(1200,2320,20,10);
-  fill(colorpen[2]) ;
+  fill(color[2]) ;
   rect(1200,2345,20,10);
-  fill(colorpen[3]) ;
+  fill(color[3]) ;
   rect(1200,2370,20,10);
-  fill(colorpen[4]) ;
+  fill(color[4]) ;
   rect(1200,2395,20,10);
-  fill(colorpen[5]) ;
+  fill(color[5]) ;
   rect(1200,2420,20,10);
-  fill(colorpen[6]) ;
+  fill(color[6]) ;
   rect(1200,2445,20),10;
-  fill(colorpen[7]) ;
+  fill(color[7]) ;
   rect(1200,2470,20,10);
 }
 
-function pieChartjen(diameter, dataJeniskelamin) {
-  var colorjen = ['#FF4500','#D2691E']
+function pieChart(diameter, dataJeniskelamin) {
+  var color = ['#FF4500','#D2691E']
   let lastAngle = 0; 
   for (var i = 0; i < dataJeniskelamin.length; i++) {
-    fill(colorjen[i])
+    fill(color[i])
     arc(275,2675,diameter,diameter,lastAngle,lastAngle + radians(anglesjen[i]));
     lastAngle += radians(anglesjen[i]);
   }
@@ -292,17 +292,17 @@ function pieChartjen(diameter, dataJeniskelamin) {
   textFont(f1);
   text("Laki-Laki                   =   8824",140,2825);
   text("Perempuan              =   8029",140,2850);
-  fill(colorjen[0]) ;
+  fill(color[0]) ;
   rect(300,2818,20,10);
-  fill(colorjen[1]) ;
+  fill(color[1]) ;
   rect(300,2845,20,10);
 }
 
-function pieChartagama(diameter, dataAgama) {
-  var coloragama = ['#8A2BE2 ','#483D8B','	#6A5ACD ','	#7B68EE ', '	#9370DB'];
+function pieChart(diameter, dataAgama) {
+  var color = ['#8A2BE2 ','#483D8B','	#6A5ACD ','	#7B68EE ', '	#9370DB'];
   let lastAngle = 0;
   for (var i = 0; i < dataAgama.length; i++) {
-    fill(coloragama[i])
+    fill(color[i])
     arc(720,2670,diameter,diameter,lastAngle,lastAngle + radians(anglesagama[i]));
     lastAngle += radians(anglesagama[i]);
   }
@@ -317,14 +317,14 @@ function pieChartagama(diameter, dataAgama) {
   text("Khatolik          = 36",615,2850)
   text("Hindu                 = 7",615,2875)
   text("Budha                = 6",615,2900)
-  fill(coloragama[0]) ;
+  fill(color[0]) ;
   rect(730,2795,20,10);
-  fill(coloragama[1]);
+  fill(color[1]);
   rect(730,2820,20,10);
-  fill(coloragama[2]);
+  fill(color[2]);
   rect(730,2845,20,10);
-  fill(coloragama[3]) ;
+  fill(color[3]) ;
   rect(730,2870,20,10);
-  fill(coloragama[4]) ;
+  fill(color[4]) ;
   rect(730,2895,20,10);
 }
