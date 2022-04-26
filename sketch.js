@@ -93,7 +93,7 @@ function draw() {
   text('Diagram Kependudukan tahun 2021',0,4540)
   textFont(f2)
   text('Berdasarkan diagram batang kependudukan tahun 2021 disamping, desa Way Huwi Kecamatan Jati Agung ',440,4710)
-  text('terdiri dari 7 dusun, dusun penduduk terbanyak yaitu dusun 7 dengan jumlah 2384 jiwa, Sedangkan dusun paling',440,4740)
+  text('terdiri dari 7 dusun, dusun penduduk terbanyak yaitu dusun 6 dengan jumlah 2384 jiwa, Sedangkan dusun paling',440,4740)
   text('sedikit penduduknya yaitu dusun 4 dengan jumlah 818 jiwa. Dusun lainya yaitu dusun 1 berjumlah 1765 jiwa,',440,4770)
   text('dusun 2 berjumlah 2366 jiwa, dusun 3 berjumlah 1806 jiwa, dusun 5 berjumlah 1606 jiwa, dan dusun 7 berjumlah 820 jiwa.',440,4800)
   noStroke()
